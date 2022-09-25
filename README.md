@@ -15,8 +15,7 @@ myBaseURL = {Your BaseURL for REST API}
 
 Create a new session and activate it
 
-```
-julia
+```julia
 
 session = Session(myHeader,myBaseURL) |> activateSession!
 
@@ -27,8 +26,7 @@ You can pipe your session to ```activateSession!``` directly or pass it as a par
 
 After that you can begin creating requests
 
-```
-julia
+```julia
 
 table = "AeSBldC"
 crit = ["facId" => "0001"]
@@ -37,8 +35,7 @@ resp = makeRequest(table,crit,header)   # Returns an HTTP response
 
 Most likely you will be interested in the data, not the respose and ```parseResponse``` is provided as a convenience to handle getting the JSON response into a DataFrame.
 
-```
-julia
+```julia
 
 makeRequest(table,crit,header) |> parseResponse  # Returns a DataFrame of the the data returned from your query
 ```
