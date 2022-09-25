@@ -22,7 +22,7 @@ session = Session(myHeader,myBaseURL) |> activateSession!
 julia> true
 ```
 
-You can pipe your session to ```activateSession!``` directly or pass it as a parameter. Either way, the ```activateSession!``` function will set your base url and your authorization for the session. You can also pass an optional ```DatFormate``` to the session for use in parsing date times if the default does not work for your needs, otherwise a default will be created for you.
+You can pipe your session to ```activateSession!``` directly or pass it as a parameter. Either way, the ```activateSession!``` function will set your base url and your authorization for the session. You can also pass an optional ```DatFormat``` to the session for use in parsing date times if the default does not work for your needs, otherwise a default will be created for you.
 
 After that you can begin creating requests
 
@@ -32,6 +32,16 @@ table = "AeSBldC"
 crit = ["facId" => "0001"]
 resp = makeRequest(table,crit,header)   # Returns an HTTP response
 ```
+
+In general, the use pattern is to specify a table of interest, search criterial in the form of a vector of pairs and run the search. One thing of note is that the request functions also have a keyword argument of ```rowLimit``` that is set to 10,000 by default. You can override this as needed by passing ```rowLimt = {newLimit}`` and get additional data. Anytime your search query returns more rows than you accept based on the rowLimit keyword a warning will appear to tell you that you are missing data.
+
+```julia
+
+┌ Warning: Result set 53270 which is larger larger than row limit, you are missing data
+└ @ Main.AiMTools d:\Julia\AiMTools\src\core.jl:72
+
+```
+
 
 Most likely you will be interested in the data, not the respose and ```parseResponse``` is provided as a convenience to handle getting the JSON response into a DataFrame.
 
