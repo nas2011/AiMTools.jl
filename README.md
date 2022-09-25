@@ -6,8 +6,7 @@ AiMTools.jl is a package for working with the AssetWorks AiM REST API. It provid
 
 You can handle using your credentials in many different ways. One way using basic auth is to create a credential file that has the following:
 
-```
-julia
+```julia
 
 myHeader = ["Authorization" => "Basic {YOUR Base64 Encoded Password}"]
 myBaseURL = {Your BaseURL for REST API}
