@@ -55,7 +55,7 @@ The package also supports using personal queries using the same pattern:
 
 ```julia
 
-queryRequest(queryName, stringName, header) |> parseResponse
+queryRequest(queryName, screenName, header) |> parseResponse
 ```
 
 ### Why Do This
