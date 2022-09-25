@@ -33,7 +33,7 @@ crit = ["facId" => "0001"]
 resp = makeRequest(table,crit,header)   # Returns an HTTP response
 ```
 
-In general, the use pattern is to specify a table of interest, search criterial in the form of a vector of pairs and run the search. One thing of note is that the request functions also have a keyword argument of ```rowLimit``` that is set to 10,000 by default. You can override this as needed by passing ```rowLimt = {newLimit}`` and get additional data. Anytime your search query returns more rows than you accept based on the rowLimit keyword a warning will appear to tell you that you are missing data.
+In general, the use pattern is to specify a table of interest, search criteria in the form of a vector of pairs and run the search. One thing of note is that the request functions also have a keyword argument of ```rowLimit``` that is set to 10,000 by default. You can override this as needed by passing ```rowLimt = {newLimit}`` and get additional data. Anytime your search query returns more rows than you accept based on the rowLimit keyword a warning will appear to tell you that you are missing data.
 
 ```julia
 
