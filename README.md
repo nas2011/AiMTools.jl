@@ -30,11 +30,13 @@ After that you can begin creating requests
 
 table = "AeSBldC"
 crit = ["facId" => "0001"]
-resp = makeRequest(table,crit,header)   # Returns an HTTP response
+resp = makeRequest(table,crit)   # Returns an HTTP response
+#=Alternative method taking an explicit header parameter
+You can override the session header if you need to make a request
+from a different user in an active session. =#
+resp = makeRequest(table,crit,header)  
 ```
 
-***Note***
-I am in the process of rewriting the request function calls so that header does not need to be explicitly passed since the session handles setting the parameters globally for the session. Thankfully due to Julia's amazing multiple dispatch this should not be a breaking change.
 
 In general, the use pattern is to specify a table of interest, search criteria in the form of a vector of pairs and run the search. One thing of note is that the request functions also have a keyword argument of ```rowLimit``` that is set to 10,000 by default. You can override this as needed by passing ```rowLimt = {newLimit}``` and get additional data. Anytime your search query returns more rows than you accept based on the rowLimit keyword a warning will appear to tell you that you are missing data.
 
