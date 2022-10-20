@@ -74,4 +74,4 @@ It's just another tool in the arsenal. It has been very helpful for automating c
 
 Additionally, DataFrames.jl is an exceptional tool for doing data analysis, and being my primary tool of choice for that task, this was a simple way to get data quickly into a Julia script.
 
-With a little imagination you can see how these simple base tools can let you build up arbitrarily complex convenience and summary function.
+With a little imagination you can see how these simple base tools can let you build up arbitrarily complex convenience and summary functions.
