@@ -77,7 +77,7 @@ function makeRequest(tableName::String,criteria::Vector{Pair{String,String}}
     ;url = baseURL,rowLimit = 10000)
         critStr = criteriaString(criteria)
         fullURL = join([url,"tableName=",tableName,"&rowLimit=$rowLimit",critStr])
-        r = HTTP.request("GET", fullURL, header)
+        r = HTTP.request("GET", fullURL, global header)
         body = r.body
         json = JSON3.read(body)
         size = json.ResultSet.total
@@ -115,7 +115,7 @@ function queryRequest(queryName::String,screenName::String, criteria::Vector{Pai
     ;url = baseURL,rowLimit = 10000)
         critStr = criteriaString(criteria)
         fullURL = join([url,"filterName=",queryName,"&screenName=", screenName, "&rowLimit=$rowLimit",critStr])
-        r = HTTP.request("GET", fullURL, header)
+        r = HTTP.request("GET", fullURL, global header)
         body = r.body
         json = JSON3.read(body)
         size = json.ResultSet.total
