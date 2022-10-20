@@ -88,6 +88,7 @@ function makeRequest(tableName::String,criteria::Vector{Pair{String,String}}
 
 function makeRequest(tableName::String,
     header::Vector{Pair{String,String}};url = baseURL,rowLimit = 10000)
+        critStr = criteriaString(criteria)
         fullURL = join([url,"tableName=",tableName,"&rowLimit=$rowLimit"])
         r = HTTP.request("GET", fullURL, header)
         body = r.body
@@ -125,6 +126,7 @@ end
 
 function queryRequest(queryName::String,screenName::String,
     header::Vector{Pair{String,String}};url = baseURL,rowLimit = 10000)
+        critStr = criteriaString(criteria)
         fullURL = join([url,"filterName=",queryName,"&screenName=", screenName, "&rowLimit=$rowLimit"])
         r = HTTP.request("GET", fullURL, header)
         body = r.body
