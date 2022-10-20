@@ -48,7 +48,7 @@ In general, the use pattern is to specify a table of interest, search criteria i
 ```
 
 
-Most likely you will be interested in the data, not the respose and ```parseResponse``` is provided as a convenience to handle getting the JSON response into a DataFrame.
+Most likely you will be interested in the data, not the response and ```parseResponse``` is provided as a convenience to handle getting the JSON response into a DataFrame. It is set up as a single parameter function so you can directly pipe the request.
 
 ```julia
 
@@ -60,6 +60,9 @@ The package also supports using personal queries using the same pattern:
 
 ```julia
 
+queryRequest(queryName, screenName) |> parseResponse
+
+#Explicit Header Version
 queryRequest(queryName, screenName, header) |> parseResponse
 ```
 
@@ -67,7 +70,7 @@ queryRequest(queryName, screenName, header) |> parseResponse
 
 You are likely thinking, "Why would you do this?" 
 
-It's just another tool in the aresenal. It has been very helpful for automating complex analyses and summaries as well as automating reports. Using PrettyTables.jl it is relatively easy to format html tables with direct links into AiM that can be very convenient. For example I have a scheduled report that sends a summary of all the notes entered for that day to me in an email. It is extremely convenient to scan these all in one spot and be able to click a link into the phase for futher investigation.
+It's just another tool in the arsenal. It has been very helpful for automating complex analyses and summaries as well as automating reports. Using PrettyTables.jl it is relatively easy to format html tables with direct links into AiM that can be very convenient. For example I have a scheduled report that sends a summary of all the notes entered for that day to me in an email. It is extremely convenient to scan these all in one spot and be able to click a link into the phase for futher investigation.
 
 Additionally, DataFrames.jl is an exceptional tool for doing data analysis, and being my primary tool of choice for that task, this was a simple way to get data quickly into a Julia script.
 

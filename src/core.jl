@@ -111,6 +111,18 @@ function queryRequest(queryName::String,screenName::String, criteria::Vector{Pai
         return r
 end
 
+function queryRequest(queryName::String,screenName::String, criteria::Vector{Pair{String,String}},
+    ;url = baseURL,rowLimit = 10000)
+        critStr = criteriaString(criteria)
+        fullURL = join([url,"filterName=",queryName,"&screenName=", screenName, "&rowLimit=$rowLimit",critStr])
+        r = HTTP.request("GET", fullURL, header)
+        body = r.body
+        json = JSON3.read(body)
+        size = json.ResultSet.total
+        if size > rowLimit @warn "Result set is $size which is larger than row limit, you are missing data" end
+        return r
+end
+
 function queryRequest(queryName::String,screenName::String,
     header::Vector{Pair{String,String}};url = baseURL,rowLimit = 10000)
         fullURL = join([url,"filterName=",queryName,"&screenName=", screenName, "&rowLimit=$rowLimit"])
